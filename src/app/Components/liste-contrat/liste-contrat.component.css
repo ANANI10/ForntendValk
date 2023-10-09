@@ -1,0 +1,8 @@
+
+.icon-button {
+    border: none; /* Supprime la bordure */
+    background: none; /* Supprime l'arrière-plan */
+    padding: 0; /* Supprime le rembourrage */
+    cursor: pointer; /* Change le curseur au survol */
+    outline: none; /* Supprime le contour au focus */
+  }

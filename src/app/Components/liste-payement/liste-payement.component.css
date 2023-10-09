@@ -1,0 +1,58 @@
+
+.icon-button {
+    border: none; /* Supprime la bordure */
+    background: none; /* Supprime l'arrière-plan */
+    padding: 0; /* Supprime le rembourrage */
+    cursor: pointer; /* Change le curseur au survol */
+    outline: none; /* Supprime le contour au focus */
+  }
+
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar input {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    font-size: 16px;
+  }
+  
+  .search-bar input::placeholder {
+    color: #aaa;
+  }
+  
+  .search-bar i {
+    margin-left: -30px; /* Ajustez la marge pour positionner l'icône */
+    position: relative;
+    left: -25px; /* Ajustez la position horizontale de l'icône */
+    color: #555; /* Couleur de l'icône */
+  }
+  
+  .search-bar input:focus {
+    outline: none;
+    border-color: #007BFF;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .page-button {
+    padding: 5px 10px;
+    margin: 0 2px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .page-button.active {
+    background-color: #ccc;
+    font-weight: bold;
+  }
+  

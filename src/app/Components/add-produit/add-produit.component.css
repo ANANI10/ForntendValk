@@ -1,0 +1,17 @@
+.btn-small-padding {
+    padding: 1%;
+    margin: 0%;
+}
+
+body {
+    font-family: 'Roboto Medium', sans-serif;
+}
+
+.mon-texte-personnalise {
+    font-family: 'Roboto Medium', sans-serif;
+}
+
+.full-height {
+    /* Utilise la hauteur totale de la fenêtre */
+    width: 100%;
+  }
