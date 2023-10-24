@@ -15,7 +15,7 @@ export class AddProduitComponent implements OnInit{
   produitForm!: FormGroup;
   listProduit : any[] = [];
   submitted = false;
-
+  estValide: boolean = true;
 
   constructor(private produitService: ProduitService, private formBuilder: FormBuilder , private route: ActivatedRoute) {
     this.produitForm = this.formBuilder.group({
@@ -57,11 +57,6 @@ export class AddProduitComponent implements OnInit{
     }
     
   }
-
-
- 
-
- 
  
 }
 

@@ -18,12 +18,18 @@ import { UpdateVenteComponent } from './Components/update-vente/update-vente.com
 import { UpdateProduitComponent } from './Components/update-produit/update-produit.component';
 import { UpdateEmployeComponent } from './Components/update-employe/update-employe.component';
 import { TypeCongeComponent } from './Components/type-conge/type-conge.component';
+import { LoginComponent } from './Components/login/login.component';
+import { AuthenticationGuard } from './guards/authentication.guard';
+import { AuthorizationGuard } from './guards/authorization.guard';
+import { NotAuthorizeComponent } from './Components/not-authorize/not-authorize.component';
+import { NbreEmployeComponent } from './Components/nbre-employe/nbre-employe.component';
+import { NbreVenteComponent } from './Components/nbre-vente/nbre-vente.component';
 
 const routes: Routes = [
 
-  {path:'dashboard' , component:DashboardComponent , children :[
-    {path:'addEmp' , component: AddEmployeComponent},
-    {path:'listEmp' , component: ListeEmployeComponent},
+  {path:'dashboard' , component:DashboardComponent, canActivate: [AuthenticationGuard], children :[
+    {path:'addEmp' , component: AddEmployeComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'listEmp' , component: ListeEmployeComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
     {path:'updateEmp' , component: UpdateEmployeComponent},
     {path:'addProd', component :AddProduitComponent},
     {path:'listeProd' , component:ListeProduitComponent},
@@ -37,9 +43,17 @@ const routes: Routes = [
     {path:'Addlivraison' , component:AddLivraisonComponent},
     {path:'Listlivraison' , component:ListeLivraisonComponent},
     {path:'Updatelivraison' , component:UpdateLivraisonComponent},
+    {path:'nombreTotalEmployes' , component:NbreEmployeComponent},
+    {path:'nombreTotalVente' , component:NbreVenteComponent},
+    {path:'calculerSommeRevenuTotal' , component:RevenueComponent},
+    {path:'notAuthorized' , component:NotAuthorizeComponent},
     
   ]},
-    {path:'typeconge' , component:TypeCongeComponent}
+    {path:'typeconge' , component:TypeCongeComponent},
+
+    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    {path:'login' , component: LoginComponent },
+
 ];
 
 @NgModule({

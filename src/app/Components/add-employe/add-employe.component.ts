@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EmployeService } from 'src/app/Services/employe.service';
 import { Employe } from 'src/models/Employe.models';
 
+
 @Component({
   selector: 'app-add-employe',
   templateUrl: './add-employe.component.html',
@@ -14,6 +15,8 @@ export class AddEmployeComponent {
   employe : Employe |any;
   employeForm!: FormGroup;
   listEmploye : any[] = [];
+  
+  
   
 
   constructor(private employeService: EmployeService, private formBuilder: FormBuilder , private route: ActivatedRoute) {

@@ -39,7 +39,7 @@
                 <td> {{ vente.quantite_vendue }} </td>
                 <td> {{ vente.prix }}</td>
                 <td>
-                    {{ getProduitDetails(vente.produitId) }}
+                    {{ getProduitDetails(vente.nom_produit) }}
                 </td>
                 <td>
                     <div style="display: flex; gap: 20px;">
@@ -47,7 +47,7 @@
                           <a routerLink="/dashboard/updateVente"> <i class="fas fa-edit" style="color: blue;"></i> </a>
                     </div>
                 </td>
-            </tr>
+            </tr> 
         </tbody>
     </table>
 

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-FpxVjH2N5EdkA69L8rTbQD3D5gcZ6h9uXpd8/Yy2X8v1o5QkqqmClgeQ8/nvhK8pEHg0g9zJirCZwbH/6vn84A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-FpxVjH2N5EdkA69L8rTbQD3D5gcZ6h9uXpd8/Yy2X8v1o5QkqqmClgeQ8/nvhK8pEHg0g9zJirCZwbH/6vn84A==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
   <title>Dashboard  </title>
 
 
@@ -34,8 +34,8 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="../../components/dashboard/img/logo.png" alt="">
         <span class="d-none d-lg-block" style="font-family: 'Times New Roman', Times, serif;">VALKVIVI</span>
+        <!--<img src="/src/assets/valk.jpg" alt=""> -->
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -227,7 +227,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-register.html">
           <i class="bi bi-card-list"></i>
-          <span>Register</span>
+          <span> Logout </span>
         </a>
       </li><!-- End Register Page Nav -->
 
@@ -238,6 +238,20 @@
         </a>
       </li><!-- End Login Page Nav -->
 
+    </ul>
+
+    <ul *ngIf="authService.isAuthenticated==true">
+      <li class="nav-link active">
+        
+        <a class="nav-link" active>
+           {{this.authService.username}} 
+        </a>
+
+      </li>
+
+      <li>
+        <button (click)="handleLogout()" class="btn btn-success">Logout</button>
+      </li>
     </ul>
 
   </aside><!-- End Sidebar-->

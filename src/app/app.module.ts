@@ -8,7 +8,7 @@ import { AddProduitComponent } from './Components/add-produit/add-produit.compon
 import { UpdateProduitComponent } from './Components/update-produit/update-produit.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AddEmployeComponent } from './Components/add-employe/add-employe.component';
 import { ListeEmployeComponent } from './Components/liste-employe/liste-employe.component';
 import { UpdateEmployeComponent } from './Components/update-employe/update-employe.component';
@@ -40,6 +40,11 @@ import { NbreVenteComponent } from './Components/nbre-vente/nbre-vente.component
 import { NgChartsModule } from 'ng2-charts';
 import { ChartComponent } from './Components/chart/chart.component';
 import { TypeCongeComponent } from './Components/type-conge/type-conge.component';
+import { LoginComponent } from './Components/login/login.component';
+import { AppHttpInterceptor } from './interceptors/app-http.interceptor';
+import { NotAuthorizeComponent } from './Components/not-authorize/not-authorize.component';
+import { AuthenticationGuard } from './guards/authentication.guard';
+import { AuthorizationGuard } from './guards/authorization.guard';
 
 
 
@@ -79,6 +84,8 @@ import { TypeCongeComponent } from './Components/type-conge/type-conge.component
     NbreVenteComponent,
     ChartComponent,
     TypeCongeComponent,
+    LoginComponent,
+    NotAuthorizeComponent,
     
   ],
   imports: [
@@ -92,7 +99,10 @@ import { TypeCongeComponent } from './Components/type-conge/type-conge.component
     
 
   ],
-  providers: [],
+  providers: [
+    { provide : HTTP_INTERCEPTORS , useClass : AppHttpInterceptor , multi:true },
+    AuthenticationGuard, AuthorizationGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
