@@ -3,13 +3,13 @@
 <html lang="en" dir="ltr">
    <head>
       <meta charset="utf-8">
-      <title> ADMIN Login Page</title>
+      <title> Page de Connexion </title>
       <link rel="stylesheet" href="login.component.css">
    </head>
    <body>
       <div class="wrapper">
          <div class="title">
-            ADMIN Login        
+            Page de Connexion        
          </div>
          <form [formGroup]="formLogin" (ngSubmit)="handleLogin()" action="#">
             <div class="field">
@@ -21,13 +21,7 @@
                <label for="password" class="form-label">Password</label>
             </div>
             <div class="content">
-               <div class="checkbox">
-                  <input type="checkbox" id="remember-me">
-                  <label for="remember-me">Remember me</label>
-               </div>
-               <div class="pass-link">
-                  <a href="#">Forgot password?</a>
-               </div>
+              
             </div>
             <div class="field">
                <input type="submit" value="Login">

@@ -1,5 +1,5 @@
 .btn-small-padding {
-    padding: 1%;
+    padding: 0%;
     margin: 0%;
 }
 
@@ -15,3 +15,10 @@ body {
     /* Utilise la hauteur totale de la fenêtre */
     width: 100%;
   }
+
+  .header-custom {
+    background-color: lightgray; /* Couleur de fond cendre */
+    padding: 10px; /* Marge intérieure pour l'espace autour du texte */
+    text-align: center; /* Centrage du texte */
+    font-size: 24px; /* Taille de police (ajustez selon vos préférences) */
+}

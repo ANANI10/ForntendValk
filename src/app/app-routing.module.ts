@@ -24,34 +24,36 @@ import { AuthorizationGuard } from './guards/authorization.guard';
 import { NotAuthorizeComponent } from './Components/not-authorize/not-authorize.component';
 import { NbreEmployeComponent } from './Components/nbre-employe/nbre-employe.component';
 import { NbreVenteComponent } from './Components/nbre-vente/nbre-vente.component';
+import { UpdatePayementComponent } from './Components/update-payement/update-payement.component';
 
 const routes: Routes = [
 
   {path:'dashboard' , component:DashboardComponent, canActivate: [AuthenticationGuard], children :[
     {path:'addEmp' , component: AddEmployeComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
     {path:'listEmp' , component: ListeEmployeComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
-    {path:'updateEmp' , component: UpdateEmployeComponent},
-    {path:'addProd', component :AddProduitComponent},
-    {path:'listeProd' , component:ListeProduitComponent},
-    {path:'updateProd' , component:UpdateProduitComponent},
-    {path:'addVente' , component: AddVenteComponent},
-    {path:'listVente' , component: ListeVenteComponent},
-    {path:'updateVente' , component: UpdateVenteComponent},
-    {path:'addPayement' , component: AddPayementComponent},
-    {path:'payementlist' , component:ListePayementComponent},
-    {path:'chart' , component:ChartComponent},
-    {path:'Addlivraison' , component:AddLivraisonComponent},
-    {path:'Listlivraison' , component:ListeLivraisonComponent},
-    {path:'Updatelivraison' , component:UpdateLivraisonComponent},
-    {path:'nombreTotalEmployes' , component:NbreEmployeComponent},
-    {path:'nombreTotalVente' , component:NbreVenteComponent},
-    {path:'calculerSommeRevenuTotal' , component:RevenueComponent},
+    {path:'updateEmp' , component: UpdateEmployeComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'addProd', component :AddProduitComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'listeProd' , component:ListeProduitComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'updateProd' , component:UpdateProduitComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'addVente' , component: AddVenteComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'listVente' , component: ListeVenteComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'updateVente' , component: UpdateVenteComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'addPayement' , component: AddPayementComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'updatePayement' , component:UpdatePayementComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"} },
+    {path:'payementlist' , component:ListePayementComponent, canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'daily-revenue-by-date?date=${date}' , component:ChartComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'Addlivraison' , component:AddLivraisonComponent ,canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'Listlivraison' , component:ListeLivraisonComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'Updatelivraison' , component:UpdateLivraisonComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'nombreTotalEmployes' , component:NbreEmployeComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'nombreTotalVente' , component:NbreVenteComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
+    {path:'calculerSommeRevenuTotal' , component:RevenueComponent , canActivate: [AuthorizationGuard], data : { role : "ADMIN"}},
     {path:'notAuthorized' , component:NotAuthorizeComponent},
     
   ]},
-    {path:'typeconge' , component:TypeCongeComponent},
+    {path:'typeconge' , component:TypeCongeComponent },
 
-    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    //{path: '', redirectTo: 'login', pathMatch: 'full'},
     {path:'login' , component: LoginComponent },
 
 ];

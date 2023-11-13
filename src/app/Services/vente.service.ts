@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
+import { Produit } from 'src/models/Produit.models';
 import { Vente } from 'src/models/Vente.models';
 
 @Injectable({
@@ -28,7 +29,8 @@ export class VenteService {
   
   }
 
-
-
-
+  getProduitById(produitId: number): Observable<Produit> {
+    return this.http.get<Produit>(`${environment.backendhost}/getProduit/${produitId}`);
+  }
+  
 }

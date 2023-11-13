@@ -26,7 +26,7 @@ export class AddVenteComponent implements OnInit{
       date_vente: ['', [Validators.required]],
       quantite_vendue: ['', [Validators.required]],
       prix: ['', [Validators.required]],
-      produitId: ['', [Validators.required]],
+      produitId: [null, [Validators.required]]
     });
   }
 
@@ -56,9 +56,12 @@ export class AddVenteComponent implements OnInit{
       console.log('Formulaire Validé');
       console.log(this.venteForm.valid);
       const venteData = { ...this.venteForm.value, produitId: +this.venteForm.value.produitId };
-      this.venteService.addVente(venteData).subscribe(vente =>
-        this.listVente.push(vente)),
+      this.venteService.addVente(venteData).subscribe(vente =>{
+        vente.produit = this.produits.find((produit) => produit.id === vente.produitId);
+        this.listVente.push(vente)
+
         this.venteForm.reset();
+      })
     }else {
       console.log('Formulaire invalide');
     }

@@ -21,11 +21,11 @@ export class AddEmployeComponent {
 
   constructor(private employeService: EmployeService, private formBuilder: FormBuilder , private route: ActivatedRoute) {
     this.employeForm = this.formBuilder.group({
-      nom: ['', [Validators.required]],
-      prenom: ['', [Validators.required]],
+      nom: ['', [Validators.required , Validators.minLength(4), Validators.maxLength(10)]],
+      prenom: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]],
       date_naissance: ['', [Validators.required]],
-      adresse: ['', [Validators.required]],
-      num_telephone: ['', [Validators.required]],
+      adresse: ['', [Validators.required , Validators.email]],
+      num_telephone: ['', [Validators.required ]],
       salaire: ['', [Validators.required]],
       age: ['', [Validators.required]],
       nationalite: ['', [Validators.required]],

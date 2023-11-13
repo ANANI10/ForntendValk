@@ -47,7 +47,8 @@ export class AuthService {
     if(token){
       this.loadProfile({"access-token":token});
       console.log(token)
-      this.router.navigateByUrl("login")
+      //this.router.navigateByUrl("login") apres je vais changer le dashboard en login
+      this.router.navigateByUrl("dashboard")
     }
 
   }

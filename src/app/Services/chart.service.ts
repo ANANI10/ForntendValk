@@ -1,28 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ChartService implements OnInit{
-  pieChartData !: number[];
+export class ChartService {
+ 
 
   constructor(private http: HttpClient){}
   
-  ngOnInit() {
-    this.recupererDonneesDiagramme();
+  getDailyRevenueForWeek(date: string): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.backendhost}/daily-revenue-by-date?date=${date}`);
   }
 
-  private recupererDonneesDiagramme() {
-    this.http.get<number[]>(`${environment.backendhost}/diagramme`).subscribe(
-      (data) => {
-        this.pieChartData = data;
-      },
-      (error) => {
-        console.error('Erreur lors de la récupération des données : ', error);
-      }
-    );
-  }
 
 }

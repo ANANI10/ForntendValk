@@ -7,4 +7,5 @@ export interface Vente{
     prix:number;
     date:Date;
     produitId: number;
+    produit?: Produit;
 }

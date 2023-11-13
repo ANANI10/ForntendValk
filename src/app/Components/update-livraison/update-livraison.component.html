@@ -13,6 +13,7 @@
 
   <div class="d-flex justify-content-center align-items-center" style="height: 50vh;">
     <div class="card">
+      <div class="header-custom card-header" style="font-family: 'Times New Roman', Times, serif;"> Modifier la Livraison  </div>
       <div class="card-body">
         <form class="row g-4" [formGroup]="livraisonForm" (ngSubmit)="onSubmit()">
           
@@ -26,7 +27,7 @@
           </div>
           <div class="col-md-4">
             <label for="status" class="form-label">Status</label>
-            <input type="text" class="form-control" id="status" placeholder="Entrez la quantité " formControlName="status">
+            <input type="text" class="form-control" id="status" placeholder="Entrez le statut " formControlName="status">
           </div>
           <div class="col-4">
             <label for="lieu" class="form-label">Lieu</label>

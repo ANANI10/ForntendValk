@@ -12,19 +12,7 @@
   <link href="../../components/dashboard/img/favicon.png" rel="icon">
   <link href="../../components/dashboard/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-
-  <!-- Vendor CSS Files -->
-
-  <!-- Template Main CSS File -->
-
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  
 </head>
 
 <body>
@@ -55,13 +43,21 @@
             <i class="fas fa-search"></i>
           </a>
         </li><!-- End Search Icon-->
-        <li class="nav-item dropdown pe-3">
+        <ul *ngIf="authService.isAuthenticated==true">
+          <li class="nav-link active">
+            <a class="nav-link" active>
+               {{this.authService.username}} 
+            </a>
+          </li>
+        </ul>
 
+        <li class="nav-item dropdown pe-3">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <span class="d-none d-md-block dropdown-toggle ps-2">K. ANANI</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            
             <li class="dropdown-header">
               <h6>Koffi Rodrigue</h6>
               <span>Informaticien</span>
@@ -185,17 +181,17 @@
         <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a routerLink= "/dashboard/addPayement">
-              <i class="fas fa-plus"></i><span>Add Payement</span>
+              <i class="fas fa-plus"></i><span> Add Payement </span>
             </a>
           </li>
           <li>
             <a routerLink= "/dashboard/payementlist">
-              <i class="fas fa-th-list height:10px"></i><span>List of Payement </span>
+              <i class="fas fa-th-list height:10px"></i><span> List of Payement </span>
             </a>
           </li>
           <li>
-            <a routerLink= "/dashboard/">
-              <i class="fas fa-sync-alt fa-lg"></i><span>Update Payement</span>
+            <a routerLink= "/dashboard/updatePayement">
+              <i class="fas fa-sync-alt fa-lg"></i><span> Update Payement </span>
             </a>
           </li>
         </ul>
@@ -203,56 +199,62 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-          <i class="fas fa-truck"></i><span>Livraison</span><i class="fas fa-chevron-down  ms-auto"></i>
+          <i class="fas fa-truck"></i><span> Livraison </span><i class="fas fa-chevron-down  ms-auto"></i>
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a routerLink= "/dashboard/Addlivraison/">
-              <i class="fas fa-plus"></i><span>Add Livraison</span>
+              <i class="fas fa-plus"></i><span> Add Livraison </span>
             </a>
           </li>
           <li>
             <a routerLink= "/dashboard/Listlivraison">
-              <i class="fas fa-th-list height:10px"></i><span>List of Livraison</span>
+              <i class="fas fa-th-list height:10px"></i><span> List of Livraison </span>
             </a>
           </li>
           <li>
             <a routerLink= "/dashboard/Updatelivraison">
-              <i class="fas fa-sync-alt fa-lg"></i><span>Update Livraison</span>
+              <i class="fas fa-sync-alt fa-lg"></i><span> Update Livraison </span>
             </a>
           </li>
         </ul>
       </li><!-- End Icons Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#icons-nav1" data-bs-toggle="collapse" href="#">
+          <i class="fas fa-truck"></i><span> Diagramme </span><i class="fas fa-chevron-down  ms-auto"></i>
+        </a>
+        <ul id="icons-nav1" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a routerLink= "/dashboard/daily-revenue-by-date?date=${date}">
+              <i class="fas fa-plus"></i><span> Journalier </span>
+            </a>
+          </li>
+          <li>
+            <a routerLink= "/dashboard/">
+              <i class="fas fa-th-list height:10px"></i><span> Mensuelle </span>
+            </a>
+          </li>
+          <li>
+            <a routerLink= "/dashboard">
+              <i class="fas fa-sync-alt fa-lg"></i><span> Annuelle </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+
       
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
-          <i class="bi bi-card-list"></i>
-          <span> Logout </span>
-        </a>
+      <li class="nav-item"> 
+         <span></span> 
+         <span>
+                <li>
+                  <button (click)="handleLogout()" class="btn btn-success"> Logout </button>
+                </li>
+          </span>
       </li><!-- End Register Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Login</span>
-        </a>
-      </li><!-- End Login Page Nav -->
-
     </ul>
 
-    <ul *ngIf="authService.isAuthenticated==true">
-      <li class="nav-link active">
-        
-        <a class="nav-link" active>
-           {{this.authService.username}} 
-        </a>
-
-      </li>
-
-      <li>
-        <button (click)="handleLogout()" class="btn btn-success">Logout</button>
-      </li>
-    </ul>
 
   </aside><!-- End Sidebar-->
 

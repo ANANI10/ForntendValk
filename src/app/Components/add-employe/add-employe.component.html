@@ -7,61 +7,157 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Ajouter Employe</title>
+    <link rel="stylesheet" href="add-employe.component.css">
+    
+<title>Ajouter Employe</title>
 </head>
 
 <body>
 
-    <form class="row g-3" [formGroup]="employeForm" (ngSubmit)="onAddEmploye()">
-        <div class="col-md-6">
-            <label for="nom" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="nom" placeholder="Entrez le nom" formControlName="nom">
-        </div>
-        <div class="col-md-6">
-            <label for="prenom" class="form-label">Prénom</label>
-            <input type="text" class="form-control" id="prenom" placeholder="Entrez le prenom" formControlName="prenom">
-        </div>
-        <div class="col-md-6">
-            <label for="date_naissance" class="form-label">Date Naissance</label>
-            <input type="date" class="form-control" id="date_naissance" placeholder="Entrez la date de naissance"
-                formControlName="date_naissance">
-        </div>
-        <div class="col-8">
-            <label for="adresse" class="form-label">Adresse</label>
-            <input type="text" class="form-control" id="adresse" placeholder="Entrez l'adresse"
-                formControlName="adresse">
-        </div>
-        <div class="col-md-6">
-            <label for="num_telephone" class="form-label">Num Tel</label>
-            <input type="number" class="form-control" id="num_telephone" formControlName="num_telephone"
-                placeholder="Entrez le numero de telephone">
-        </div>
-        <div class="col-md-6">
-            <label for="salaire" class="form-label">Salaire</label>
-            <input type="number" class="form-control" id="salaire" formControlName="salaire"
-                placeholder="Entrez le salaire">
-        </div>
-        <div class="col-md-6">
-            <label for="age" class="form-label">Age</label>
-            <input type="number" class="form-control" id="age" formControlName="age"
-                placeholder="Entrez l'age de l'employé">
-        </div>
-        <div class="col-md-6">
-            <label for="nationalite" class="form-label">Nationalite</label>
-            <input type="text" class="form-control" id="nationalite" formControlName="nationalite"
-                placeholder="Entrez la nationalite">
-        </div>
-        <div class="col-md-6">
-            <label for="fonction" class="form-label"> Fonction </label>
-            <input type="text" class="form-control" id="fonction" formControlName="fonction"
-                placeholder="Entrez la fonction">
-        </div>
+   
+        <div class="card card-custom">
+            <div class="card-header header" style="font-family: 'Times New Roman', Times, serif;">Formulaire d'Ajout d'Employé</div>
+                <div class="card-body">
+                    <form class="row g-3" [formGroup]="employeForm" (ngSubmit)="onAddEmploye()">
+                        <div class="col-md-6">
+                            <label for="nom" class="form-label">Nom</label>
+                            <input type="text" class="form-control" id="nom" placeholder="Entrez le nom" formControlName="nom">
+                            <div *ngIf="employeForm.get('nom')?.invalid && (employeForm.get('nom')?.dirty || employeForm.get('nom')?.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="employeForm.get('nom')?.errors?.['required']">
+                                Nom is required.
+                            </div>
+                            <div *ngIf="employeForm.get('nom')?.errors?.['minlength']">
+                                Nom must be at least 4 characters long.
+                            </div>
+                        </div>
+                        </div>
+                        <!--<div *ngIf="employeForm.get('nom')?.invalid && (employeForm.get('nom')?.dirty || employeForm.get('nom')?.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="employeForm.get('nom')?.errors?.['required']">
+                                Nom is required.
+                            </div>
+                        </div> On fait cela quand on veut afficher le message d'erreur à l'extérieur de la balise de input-->
+                        <br>
+                        <div class="col-md-6">
+                            <label for="prenom" class="form-label">Prénom</label>
+                            <input type="text" class="form-control" id="prenom" placeholder="Entrez le prenom" formControlName="prenom">
+                            <div *ngIf="employeForm.get('prenom')?.invalid && (employeForm.get('prenom')?.dirty || employeForm.get('prenom')?.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="employeForm.get('prenom')?.errors?.['required']">
+                                Prenom is required.
+                            </div>
+                            <div *ngIf="employeForm.get('prenom')?.errors?.['minlength']">
+                                Prenom must be at least 4 characters long.
+                              </div>
+                              <div *ngIf="employeForm.get('prenom')?.errors?.['maxlength']">
+                                Prenom must be at most 10 characters long.
+                              </div>
+                            </div>
+                        </div>
+                        <!--<div *ngIf="employeForm.get('prenom')?.invalid && (employeForm.get('prenom')?.dirty || employeForm.get('prenom')?.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="employeForm.get('prenom')?.errors?.['required']">
+                                Prenom is required.
+                            </div>
+                            <div *ngIf="employeForm.get('prenom')?.errors?.['minlength']">
+                                Prenom must be at least 4 characters long.
+                            </div>
+                              <div *ngIf="employeForm.get('prenom')?.errors?.['maxlength']">
+                                Prenom must be at most 10 characters long.
+                              </div>
+                              
+                        </div>-->
+  
+                        
+                        <div class="col-md-6">
+                            <label for="date_naissance" class="form-label">Date Naissance</label>
+                            <input type="date" class="form-control" id="date_naissance" placeholder="Entrez la date de naissance"
+                                formControlName="date_naissance">
+                            <div *ngIf="employeForm.get('date_naissance')?.invalid && (employeForm.get('date_naissance')?.dirty || employeForm.get('date_naissance')?.touched)"
+                            class="alert alert-danger">
+                                <div *ngIf="employeForm.get('date_naissance')?.errors?.['required']">
+                                    Date Naissance is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <label for="adresse" class="form-label">Adresse</label>
+                            <input type="text" class="form-control" id="adresse" placeholder="Entrez l'adresse"
+                                formControlName="adresse">
+                                <div *ngIf="employeForm.get('adresse')?.invalid && (employeForm.get('adresse')?.dirty || employeForm.get('adresse')?.touched)"
+                                        class="alert alert-danger">
+                                    <div *ngIf="employeForm.get('adresse')?.errors?.['required']">
+                                        Adresse is required.
+                                    </div>
+                                    <div *ngIf="employeForm.get('adresse')?.errors?.['email']">
+                                        L'adresse e-mail n'est pas valide.
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="num_telephone" class="form-label">Num Tel</label>
+                            <input type="number" class="form-control" id="num_telephone" formControlName="num_telephone"
+                                placeholder="Entrez le numero de telephone">
+                                <div *ngIf="employeForm.get('num_telephone')?.invalid && (employeForm.get('num_telephone')?.dirty || employeForm.get('num_telephone')?.touched)"
+                                class="alert alert-danger">
+                                    <div *ngIf="employeForm.get('num_telephone')?.errors?.['required']">
+                                        Telephone is required.
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="salaire" class="form-label">Salaire</label>
+                            <input type="number" class="form-control" id="salaire" formControlName="salaire"
+                                placeholder="Entrez le salaire">
+                                <div *ngIf="employeForm.get('salaire')?.invalid && (employeForm.get('salaire')?.dirty || employeForm.get('salaire')?.touched)"
+                                class="alert alert-danger">
+                                    <div *ngIf="employeForm.get('salaire')?.errors?.['required']">
+                                        Salaire is required.
+                                    </div>
+                                </div>
+                                
+                        </div>
+                        <div class="col-md-6">
+                            <label for="age" class="form-label">Age</label>
+                            <input type="number" class="form-control" id="age" formControlName="age"
+                                placeholder="Entrez l'age de l'employé">
+                                <div *ngIf="employeForm.get('age')?.invalid && (employeForm.get('age')?.dirty || employeForm.get('age')?.touched)"
+                                class="alert alert-danger">
+                                    <div *ngIf="employeForm.get('age')?.errors?.['required']">
+                                        Age is required.
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="nationalite" class="form-label">Nationalite</label>
+                            <input type="text" class="form-control" id="nationalite" formControlName="nationalite"
+                                placeholder="Entrez la nationalite">
+                                <div *ngIf="employeForm.get('nationalite')?.invalid && (employeForm.get('nationalite')?.dirty || employeForm.get('nationalite')?.touched)"
+                                class="alert alert-danger">
+                                    <div *ngIf="employeForm.get('nationalite')?.errors?.['required']">
+                                        Nationalite is required.
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fonction" class="form-label"> Fonction </label>
+                            <input type="text" class="form-control" id="fonction" formControlName="fonction"
+                                placeholder="Entrez la fonction">
+                                <div *ngIf="employeForm.get('fonction')?.invalid && (employeForm.get('fonction')?.dirty || employeForm.get('fonction')?.touched)"
+                                class="alert alert-danger">
+                                    <div *ngIf="employeForm.get('fonction')?.errors?.['required']">
+                                        Fonction is required.
+                                    </div>
+                                </div>
+                        </div>
 
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Save</button>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
         </div>
-    </form>
-
     <div class="container">
         <router-outlet></router-outlet>
     </div>

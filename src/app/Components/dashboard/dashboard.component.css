@@ -17,6 +17,7 @@
     font-family: "Open Sans", sans-serif;
     background: #f6f9ff;
     color: #444444;
+    
   }
   
   a {
@@ -119,11 +120,13 @@
     text-align: center;
     font-size: 15px;
     padding: 10px 25px;
+    
   }
   
   .dropdown-menu .dropdown-footer a {
     color: #444444;
     text-decoration: underline;
+    
   }
   
   .dropdown-menu .dropdown-footer a:hover {
@@ -133,6 +136,7 @@
   .dropdown-menu .dropdown-divider {
     color: #a5c5fe;
     margin: 0;
+    margin: 100%;
   }
   
   .dropdown-menu .dropdown-item {
@@ -792,6 +796,7 @@
     color: #aab7cf;
     margin-bottom: 0;
     padding: 0;
+    
   }
   
   .dashboard .filter .dropdown-item {
@@ -832,7 +837,7 @@
   
   .dashboard .customers-card .card-icon {
     color: #ff771d;
-    background: #ffecdf;
+    background:#ffecdf;
   }
   
   /* Activity */
@@ -1214,7 +1219,7 @@
   # Footer
   --------------------------------------------------------------*/
   .footer {
-    padding: 20px 0;
+    padding: 0px 0;
     font-size: 14px;
     transition: all 0.3s;
     border-top: 1px solid #cddfff;

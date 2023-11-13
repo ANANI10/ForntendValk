@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { ProduitService } from 'src/app/Services/produit.service';
 import { VenteService } from 'src/app/Services/vente.service';
 import { Produit } from 'src/models/Produit.models';
@@ -26,7 +26,7 @@ export class ListeVenteComponent implements OnInit{
   totalPages: number = 1;
   produit !: Observable<Produit>
 
-  constructor(private venteService: VenteService, private produitService:ProduitService ,  private formBuilder: FormBuilder , private route: ActivatedRoute) {
+  constructor(private venteService: VenteService, public produitService:ProduitService ,  private formBuilder: FormBuilder , private route: ActivatedRoute) {
     this.venteForm = this.formBuilder.group({
       date_vente: ['', [Validators.required]],
       quantite_vendue: ['', [Validators.required]],
@@ -142,5 +142,12 @@ export class ListeVenteComponent implements OnInit{
     )
   }
 
+  /*getProduitDetails(produitId: number): Observable<string> {
+    return this.venteService.getProduitById(produitId).pipe(
+      map(produit => produit ? produit.nom_produit : 'Produit introuvable')
+    );
+  }
+  
+*/
 
 }
